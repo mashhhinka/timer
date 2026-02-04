@@ -1,6 +1,10 @@
 import time
 
 def countdown_timer(hours, minutes, seconds):
+    
+    if hours < 0 or minutes < 0 or seconds < 0:
+        raise ValueError("Time cannot be negative")
+    
     total_seconds = hours * 3600 + minutes * 60 + seconds
 
     while total_seconds >= 0:
@@ -20,8 +24,8 @@ def main():
     try:
         h, m, s = map(int, user_input.split(":"))
         countdown_timer(h, m, s)
-    except ValueError:
-        print("Invalid format! Please use h:m:s")
+    except ValueError as e:
+        print(f"Invalid format {e} Please use h:m:s")
 
 if __name__ == "__main__":
     main()
